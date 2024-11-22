@@ -11,6 +11,7 @@ use {
 };
 
 mod Aerials;
+mod Tilts;
 
 use crate::MARKED_COLORS;
 
@@ -362,14 +363,18 @@ unsafe extern "C" fn expression_specialn3_ex(agent: &mut L2CAgentBase) {
 
 unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
     unsafe {
-        if StatusModule::status_kind(fighter.module_accessor) == *FIGHTER_STATUS_KIND_ATTACK
-        || StatusModule::status_kind(fighter.module_accessor) == *FIGHTER_STATUS_KIND_ATTACK_AIR
-        {
-            // Show gun
-            ModelModule::set_mesh_visibility(fighter.module_accessor, Hash40::new("dante_gun"), true);
-        } else {
-            // Hide gun
-            ModelModule::set_mesh_visibility(fighter.module_accessor, Hash40::new("dante_gun"), false);
+        let color = WorkModule::get_int(fighter.module_accessor, *FIGHTER_INSTANCE_WORK_ID_INT_COLOR);
+        
+        if crate::MARKED_COLORS[color as usize] {
+            if StatusModule::status_kind(fighter.module_accessor) == *FIGHTER_STATUS_KIND_ATTACK
+            || StatusModule::status_kind(fighter.module_accessor) == *FIGHTER_STATUS_KIND_ATTACK_AIR
+            {
+                // Show gun
+                ModelModule::set_mesh_visibility(fighter.module_accessor, Hash40::new("dante_gun"), true);
+            } else {
+                // Hide gun
+                ModelModule::set_mesh_visibility(fighter.module_accessor, Hash40::new("dante_gun"), false);
+            }
         }
     }
 }
@@ -378,6 +383,7 @@ pub fn install() {
     let agent = &mut smashline::Agent::new("cloud");
     //install aerials
     Aerials::install();
+    Tilts::install();
     Agent::new("cloud")
 		.game_acmd("game_specialn1_ex_dante", dante_specialn1_ex, Default)
         .effect_acmd("effect_specialn1_ex_dante", dante_effect_specialn1_ex, Default)
