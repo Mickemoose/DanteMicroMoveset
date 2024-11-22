@@ -375,6 +375,9 @@ unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
 }
 
 pub fn install() {
+    let agent = &mut smashline::Agent::new("cloud");
+    //install aerials
+    Aerials::install();
     Agent::new("cloud")
 		.game_acmd("game_specialn1_ex_dante", dante_specialn1_ex, Default)
         .effect_acmd("effect_specialn1_ex_dante", dante_effect_specialn1_ex, Default)
@@ -390,7 +393,7 @@ pub fn install() {
         .sound_acmd("sound_specialn3_ex_dante", sound_specialn3_ex, Default)
         .on_line(Main, dante_frame)
         .install();
-    let agent = &mut smashline::Agent::new("cloud");
-    Aerials::install(agent);
+
+
 
 }

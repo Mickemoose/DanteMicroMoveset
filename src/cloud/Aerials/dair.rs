@@ -13,7 +13,7 @@ use {
 /// DOWN AERIAL ///
 unsafe extern "C" fn game_specialairndown(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 1.0);
-    macros::FT_MOTION_RATE(agent, 0.5);
+    //macros::FT_MOTION_RATE(agent, 0.5);
     for _ in 0..20 {
         if macros::is_excute(agent) {
             macros::ATTACK(agent, 0, 0, Hash40::new("top"), 4.0, 50, 80, 0, 25, 4.0, 0.0, 0.0, 0.0, Some(0.0), Some(-22.0), Some(0.0), 0.0, 1.0, *ATTACK_SETOFF_KIND_OFF, *ATTACK_LR_CHECK_F, false, -2, 0.0, 0, false, false, false, false, false, *COLLISION_SITUATION_MASK_GA, *COLLISION_CATEGORY_MASK_ALL, *COLLISION_PART_MASK_ALL, false, Hash40::new("collision_attr_jack_bullet"), *ATTACK_SOUND_LEVEL_S, *COLLISION_SOUND_ATTR_JACK_SHOT, *ATTACK_REGION_OBJECT);
@@ -125,11 +125,13 @@ unsafe extern "C" fn expression_specialairndown(agent: &mut L2CAgentBase) {
 
 //END DOWN AERIAL//
 
-pub fn install(agent: &mut smashline::Agent) {
+pub fn install() {
     // Status
     // Motion
-    agent.game_acmd("game_specialndown_dante", game_specialairndown, Default);
-    agent.effect_acmd("effect_specialndown_dante", effect_specialairndown, Default);
-    agent.sound_acmd("sound_specialndown_dante", sound_specialairndown, Default);
-    agent.expression_acmd("expression_specialndown_dante", expression_specialairndown, Default);
+    Agent::new("cloud")
+    .game_acmd("game_specialndown_dante", game_specialairndown, Default)
+    .effect_acmd("effect_specialndown_dante", effect_specialairndown, Default)
+    .sound_acmd("sound_specialndown_dante", sound_specialairndown, Default)
+    .expression_acmd("effect_specialndown_dante", expression_specialairndown, Default)
+    .install();
 }

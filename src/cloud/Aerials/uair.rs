@@ -68,12 +68,13 @@ unsafe extern "C" fn expression_attackairhi(agent: &mut L2CAgentBase) {
 }
 //END UP AERIAL
 
-pub fn install(agent: &mut smashline::Agent) {
+pub fn install() {
     // Status
     // Motion
-
-    agent.game_acmd("game_attackairhi_dante", game_attackairhi, Default);
-    agent.effect_acmd("effect_attackairhi_dante", effect_attackairhi, Default);
-    agent.sound_acmd("sound_attackairhi_dante", sound_attackairhi, Default);
-    agent.expression_acmd("expression_attackairhi_dante", expression_attackairhi, Default);
+    Agent::new("cloud")
+        .game_acmd("game_attackairhi_dante", game_attackairhi, Default)
+        .effect_acmd("effect_attackairhi_dante", effect_attackairhi, Default)
+        .sound_acmd("sound_attackairhi_dante", sound_attackairhi, Default)
+        .expression_acmd("expression_attackairhi_dante", expression_attackairhi, Default)
+        .install();
 }
