@@ -61,6 +61,34 @@ extern "C" fn mods_mounted(_ev: arcropolis_api::Event) {
         }
     };
 
+    add_narration_characall_entry("vc_narration_characall_dante");
+
+    add_chara_db_entry_info(CharacterDatabaseEntry{
+        ui_chara_id: hash40("ui_chara_dante"),
+        clone_from_ui_chara_id: Some(hash40("ui_chara_cloud")),
+        name_id: StringType::Overwrite(CStrCSK::new("dante")),
+        ui_series_id: Hash40Type::Overwrite(hash40("ui_series_devil_may_cry")),
+        //disp_order: SignedByteType::Overwrite(82),
+        is_dlc:BoolType::Overwrite(false),
+        is_patch: BoolType::Overwrite(false),
+        color_num: UnsignedByteType::Overwrite(color_num as u8),
+        extra_index_maps: UnsignedByteMap::Overwrite(HashMap::from([
+            (hash40("color_start_index"), UnsignedByteType::Overwrite(lowest_color as u8))
+        ])),
+        extra_hash_maps: Hash40Map::Overwrite(HashMap::from([
+            (hash40("characall_label_c00"), Hash40Type::Overwrite(hash40("vc_narration_characall_dante"))),
+            (hash40("original_ui_chara_hash"), Hash40Type::Overwrite(hash40("ui_chara_cloud")))
+        ])),
+        ..Default::default()
+    });
+
+    add_chara_layout_db_entry_info(CharacterLayoutDatabaseEntry {
+        ui_layout_id: hash40("ui_chara_dante_00"),
+        clone_from_ui_layout_id: Some(hash40("ui_chara_cloud_00")),
+        ui_chara_id: Hash40Type::Overwrite(hash40("ui_chara_dante")),
+        ..Default::default()
+    });
+
     add_series_db_entry_info(SeriesDatabaseEntry {
         ui_series_id: hash40("ui_series_devil_may_cry"),
         name_id: StringType::Overwrite(CStrCSK::new("devil_may_cry")),
