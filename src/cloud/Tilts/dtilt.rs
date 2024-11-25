@@ -28,7 +28,7 @@ unsafe extern "C" fn game_attacklw3(agent: &mut L2CAgentBase) {
 unsafe extern "C" fn effect_attacklw3(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 4.0);
     if macros::is_excute(agent) {
-        macros::AFTER_IMAGE4_ON_arg29(agent, Hash40::new("tex_cloud_sword6"), Hash40::new("tex_cloud_sword2"), 7, Hash40::new("haver"), 0, 1, 0, Hash40::new("haver"), 0, 16.2, 0, true, Hash40::new("null"), Hash40::new("haver"), 0, 0, 0, 0, 0, 0, 1, 0, *EFFECT_AXIS_X, 0, *TRAIL_BLEND_ALPHA, 101, *TRAIL_CULL_NONE, 1.4, 0.1);
+        macros::AFTER_IMAGE4_ON_arg29(agent, Hash40::new("tex_cloud_sword3"), Hash40::new("tex_cloud_sword4"), 7, Hash40::new("haver"), 0, 1, 0, Hash40::new("haver"), 0, 16.2, 0, true, Hash40::new("null"), Hash40::new("haver"), 0, 0, 0, 0, 0, 0, 1, 0, *EFFECT_AXIS_X, 0, *TRAIL_BLEND_ALPHA, 101, *TRAIL_CULL_NONE, 1.4, 0.1);
     }
     frame(agent.lua_state_agent, 5.0);
     if macros::is_excute(agent) {

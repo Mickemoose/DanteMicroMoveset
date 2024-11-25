@@ -139,17 +139,17 @@ unsafe extern "C" fn game_specialairnrandom(agent: &mut L2CAgentBase) {
 
 unsafe extern "C" fn effect_specialairnrandom(agent: &mut L2CAgentBase) {
     if macros::is_excute(agent) {
-        macros::EFFECT(agent, Hash40::new("dante_gunspecial_muzzle"), Hash40::new("havel"), 0, 0.8, 1.9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, true);
+        macros::EFFECT(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, 0.8, 1.9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, true);
         macros::LAST_EFFECT_SET_RATE(agent, 2);
     }
     wait(agent.lua_state_agent, 3.0);
     if macros::is_excute(agent) {
-        macros::EFFECT(agent, Hash40::new("dante_gunspecial_muzzle"), Hash40::new("havel"), 0, 0.8, 1.9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, true);
+        macros::EFFECT(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, 0.8, 1.9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, true);
         macros::LAST_EFFECT_SET_RATE(agent, 2);
     }
     wait(agent.lua_state_agent, 3.0);
     if macros::is_excute(agent) {
-        macros::EFFECT(agent, Hash40::new("dante_gunspecial_muzzle"), Hash40::new("havel"), 0, 0.8, 1.9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, true);
+        macros::EFFECT(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, 0.8, 1.9, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, true);
         macros::LAST_EFFECT_SET_RATE(agent, 2);
     }
     wait(agent.lua_state_agent, 6.0);
@@ -180,7 +180,7 @@ unsafe extern "C" fn sound_specialairnrandom(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 7.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_02"));
     }
     frame(agent.lua_state_agent, 10.0);
     if macros::is_excute(agent) {
@@ -188,7 +188,7 @@ unsafe extern "C" fn sound_specialairnrandom(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 13.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_03"));
     }
     frame(agent.lua_state_agent, 16.0);
     if macros::is_excute(agent) {
@@ -196,11 +196,11 @@ unsafe extern "C" fn sound_specialairnrandom(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 19.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_02"));
     }
     frame(agent.lua_state_agent, 25.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_03"));
     }
     frame(agent.lua_state_agent, 28.0);
     if macros::is_excute(agent) {
@@ -208,7 +208,7 @@ unsafe extern "C" fn sound_specialairnrandom(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 31.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_02"));
     }
     frame(agent.lua_state_agent, 34.0);
     if macros::is_excute(agent) {
@@ -216,7 +216,7 @@ unsafe extern "C" fn sound_specialairnrandom(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 37.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_03"));
     }
     frame(agent.lua_state_agent, 40.0);
     if macros::is_excute(agent) {
@@ -224,11 +224,11 @@ unsafe extern "C" fn sound_specialairnrandom(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 43.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_02"));
     }
     else {
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_03"));
     }
     }
     frame(agent.lua_state_agent, 4.0);
@@ -237,7 +237,7 @@ unsafe extern "C" fn sound_specialairnrandom(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 7.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_02"));
     }
     frame(agent.lua_state_agent, 10.0);
     if macros::is_excute(agent) {
@@ -245,7 +245,7 @@ unsafe extern "C" fn sound_specialairnrandom(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 13.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_03"));
     }
     frame(agent.lua_state_agent, 16.0);
     if macros::is_excute(agent) {
@@ -253,11 +253,11 @@ unsafe extern "C" fn sound_specialairnrandom(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 19.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_02"));
     }
     frame(agent.lua_state_agent, 25.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_03"));
     }
     frame(agent.lua_state_agent, 28.0);
     if macros::is_excute(agent) {
@@ -265,7 +265,7 @@ unsafe extern "C" fn sound_specialairnrandom(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 31.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_02"));
     }
     frame(agent.lua_state_agent, 34.0);
     if macros::is_excute(agent) {
@@ -273,14 +273,14 @@ unsafe extern "C" fn sound_specialairnrandom(agent: &mut L2CAgentBase) {
     }
     frame(agent.lua_state_agent, 37.0);
     if macros::is_excute(agent) {
-        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_01"));
+        macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_03"));
     }
     frame(agent.lua_state_agent, 40.0);
     if macros::is_excute(agent) {
         macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_01"));
     }
     frame(agent.lua_state_agent, 43.0);
-    macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_01"));
+    macros::PLAY_SE(agent, Hash40::new("se_dante_special_n04_02"));
 }
 
 unsafe extern "C" fn expression_specialairnrandom(agent: &mut L2CAgentBase) {

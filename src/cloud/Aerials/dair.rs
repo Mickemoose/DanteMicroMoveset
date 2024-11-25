@@ -59,7 +59,7 @@ unsafe extern "C" fn game_specialairndown(agent: &mut L2CAgentBase) {
 unsafe extern "C" fn effect_specialairndown(agent: &mut L2CAgentBase) {
     wait(agent.lua_state_agent, 1.0);
     if macros::is_excute(agent) {
-        macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gunspecial_muzzle"), Hash40::new("havel"), 0, 0.8, 1.9, 0, 0, 0, 1, true);
+        macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, 0.8, 1.9, 0, 0, 0, 1, true);
         macros::LAST_EFFECT_SET_RATE(agent, 2);
     }
     wait(agent.lua_state_agent, 7.0);
@@ -84,7 +84,7 @@ unsafe extern "C" fn sound_specialairndown(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 8.0);
     for _ in 0..19 {
         if macros::is_excute(agent) {
-            macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_01"));
+            macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_02"));
         }
         wait(agent.lua_state_agent, 3.0);
         if macros::is_excute(agent) {
@@ -92,7 +92,7 @@ unsafe extern "C" fn sound_specialairndown(agent: &mut L2CAgentBase) {
         }
         wait(agent.lua_state_agent, 4.0);
         if macros::is_excute(agent) {
-            macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_01"));
+            macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_03"));
         }
         wait(agent.lua_state_agent, 7.0);
     }
