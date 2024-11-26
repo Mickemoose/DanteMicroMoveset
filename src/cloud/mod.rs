@@ -501,21 +501,24 @@ unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
             }
         }
         if WorkModule::is_flag(boma, FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_AURA_ACTIVE)  {
+            AttackModule::set_power_up(fighter.module_accessor, 1.25);
+            DamageModule::set_damage_mul(fighter.module_accessor, 0.8);
+            damage!(fighter, *MA_MSC_DAMAGE_DAMAGE_NO_REACTION, *DAMAGE_NO_REACTION_MODE_ALWAYS, 0);
             _EFFECT_COUNTER += 1;
             if _EFFECT_COUNTER == 10 {
                 macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_superstar"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 1, true, 0.6);
-                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("waist"), 0, 0, 0, 0, 0, 0, 4.0, true, 1);
+                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("waist"), 0, 0, 0, 0, 0, 0, 1.0, true, 1);
                 macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
-                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 4.0, true, 1);
+                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 1.0, true, 1);
                 macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
             }
             if _EFFECT_COUNTER >= 20 {
                 macros::EFFECT_OFF_KIND(fighter, Hash40::new("sys_status_attack_up"), false, false);
                 macros::EFFECT_OFF_KIND(fighter, Hash40::new("sys_superstar"), false, false);
                 macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_superstar"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 1, true, 0.6);
-                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("waist"), 0, 0, 0, 0, 0, 0, 4.0, true, 1);
+                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("waist"), 0, 0, 0, 0, 0, 0, 1.0, true, 1);
                 macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
-                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 4.0, true, 1);
+                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 1.0, true, 1);
                 macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
                 _EFFECT_COUNTER = 0;
             }

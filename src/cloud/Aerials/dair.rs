@@ -59,13 +59,13 @@ unsafe extern "C" fn game_specialairndown(agent: &mut L2CAgentBase) {
 unsafe extern "C" fn effect_specialairndown(agent: &mut L2CAgentBase) {
     wait(agent.lua_state_agent, 1.0);
     if macros::is_excute(agent) {
-        macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, 0.8, 1.9, 0, 0, 0, 1, true);
+        macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, -5.0, 1.9, 0, 0, 0, 1, true);
         macros::LAST_EFFECT_SET_RATE(agent, 2);
     }
     wait(agent.lua_state_agent, 7.0);
     wait(agent.lua_state_agent, 1.0);
     if macros::is_excute(agent) {
-        macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, 0.8, 1.9, 0, 0, 0, 1, true);
+        macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, -5.0, 1.9, 0, 0, 0, 1, true);
     }
     wait(agent.lua_state_agent, 14.0);
 }
