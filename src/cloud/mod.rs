@@ -398,6 +398,8 @@ unsafe extern "C" fn expression_specialn3_ex(agent: &mut L2CAgentBase) {
 const FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_EFFECT_SPAWNED : i32 = 0x20000226;
 const FIGHTER_INSTANCE_WORK_ID_INT_STYLE_TIMER : i32 = 0x1000022A;
 const FIGHTER_INSTANCE_WORK_ID_INT_STYLE_COUNTER : i32 = 0x1000022B;
+const FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_AURA_ACTIVE : i32 = 0x20000227;
+static mut _EFFECT_COUNTER: u32 = 0;
 
 unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
     unsafe {
@@ -466,6 +468,7 @@ unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
                         macros::PLAY_SE(fighter, Hash40::new("se_dmc_rank_a"));
                         macros::EFFECT(fighter, Hash40::new("dmc_rank_a"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
                     } else if combo_counter == 15 {
+                        WorkModule::on_flag(boma, FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_AURA_ACTIVE);
                         macros::PLAY_SE(fighter, Hash40::new("se_dmc_rank_s"));
                         macros::EFFECT(fighter, Hash40::new("dmc_rank_s"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
                     } else if combo_counter == 18 {
@@ -481,7 +484,8 @@ unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
             
             // Reset effect spawned flag
             if status_frame <= 1.0 {
-                WorkModule::off_flag(boma, FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_EFFECT_SPAWNED)
+                WorkModule::off_flag(boma, FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_AURA_ACTIVE);
+                WorkModule::off_flag(boma, FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_EFFECT_SPAWNED);
             }
 
 
@@ -494,6 +498,26 @@ unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
             } else {
                 // Hide gun
                 ModelModule::set_mesh_visibility(fighter.module_accessor, Hash40::new("dante_gun"), false);
+            }
+        }
+        if WorkModule::is_flag(boma, FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_AURA_ACTIVE)  {
+            _EFFECT_COUNTER += 1;
+            if _EFFECT_COUNTER == 10 {
+                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_superstar"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 1, true, 0.6);
+                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("waist"), 0, 0, 0, 0, 0, 0, 4.0, true, 1);
+                macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
+                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 4.0, true, 1);
+                macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
+            }
+            if _EFFECT_COUNTER >= 20 {
+                macros::EFFECT_OFF_KIND(fighter, Hash40::new("sys_status_attack_up"), false, false);
+                macros::EFFECT_OFF_KIND(fighter, Hash40::new("sys_superstar"), false, false);
+                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_superstar"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 1, true, 0.6);
+                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("waist"), 0, 0, 0, 0, 0, 0, 4.0, true, 1);
+                macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
+                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 4.0, true, 1);
+                macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
+                _EFFECT_COUNTER = 0;
             }
         }
     }
