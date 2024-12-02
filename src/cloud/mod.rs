@@ -62,14 +62,14 @@ unsafe extern "C" fn dante_specialn1_ex(agent: &mut L2CAgentBase) {
         macros::FT_SHOOTING_ATTACK_GROUND_CHECK_NEW(agent, 1, 4, 4);
         macros::FT_SHOOTING_ATTACK_GROUND_CHECK_NEW_arg5(agent, 2, 4, 4, Hash40::new("dante_gun_hit2"), Hash40::new("se_dante_special_n02_01"));
     }
-    frame(agent.lua_state_agent, 27.0);
+    frame(agent.lua_state_agent, 28.0);
     if macros::is_excute(agent) {
         WorkModule::on_flag(agent.module_accessor, *FIGHTER_STATUS_ATTACK_FLAG_ENABLE_COMBO);
     }
-    frame(agent.lua_state_agent, 28.0);
-    if macros::is_excute(agent) {
-        WorkModule::on_flag(agent.module_accessor, *FIGHTER_STATUS_ATTACK_FLAG_ENABLE_RESTART);
-    }
+    //frame(agent.lua_state_agent, 28.0);
+    //if macros::is_excute(agent) {
+    //    WorkModule::on_flag(agent.module_accessor, *FIGHTER_STATUS_ATTACK_FLAG_ENABLE_RESTART);
+    //}
     wait(agent.lua_state_agent, 1.0);
     if macros::is_excute(agent) {
         AttackModule::clear_all(agent.module_accessor);
@@ -115,9 +115,9 @@ unsafe extern "C" fn dante_effect_specialn1_ex(agent: &mut L2CAgentBase) {
 
 unsafe extern "C" fn dante_sound_specialn1_ex(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 10.0);
-    if macros::is_excute(agent) {
-        macros::PLAY_SEQUENCE(agent, Hash40::new("seq_jack_rnd_special_n02_01"));
-    }
+    //if macros::is_excute(agent) {
+    //    macros::PLAY_SEQUENCE(agent, Hash40::new("seq_jack_rnd_special_n02_01"));
+    //}
     frame(agent.lua_state_agent, 12.0);
     if macros::is_excute(agent) {
         macros::PLAY_SE(agent, Hash40::new("se_dante_special_n06_01"));
@@ -195,7 +195,7 @@ unsafe extern "C" fn game_specialn2_ex(agent: &mut L2CAgentBase) {
         macros::FT_SHOOTING_ATTACK_GROUND_CHECK_NEW(agent, 1, 4, 4);
         macros::FT_SHOOTING_ATTACK_GROUND_CHECK_NEW_arg5(agent, 2, 4, 4, Hash40::new("dante_gun_hit2"), Hash40::new("se_dante_special_n02_01"));
     }
-    frame(agent.lua_state_agent, 27.0);
+    frame(agent.lua_state_agent, 28.0);
     if macros::is_excute(agent) {
         WorkModule::on_flag(agent.module_accessor, *FIGHTER_STATUS_ATTACK_FLAG_ENABLE_COMBO);
     }
@@ -513,24 +513,6 @@ unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
             AttackModule::set_power_up(fighter.module_accessor, 1.25);
             DamageModule::set_damage_mul(fighter.module_accessor, 0.8);
             damage!(fighter, *MA_MSC_DAMAGE_DAMAGE_NO_REACTION, *DAMAGE_NO_REACTION_MODE_ALWAYS, 0);
-            _EFFECT_COUNTER += 1;
-            if _EFFECT_COUNTER == 10 {
-                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_superstar"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 1, true, 0.6);
-                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("waist"), 0, 0, 0, 0, 0, 0, 1.0, true, 1);
-                macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
-                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 1.0, true, 1);
-                macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
-            }
-            if _EFFECT_COUNTER >= 20 {
-                macros::EFFECT_OFF_KIND(fighter, Hash40::new("sys_status_attack_up"), false, false);
-                macros::EFFECT_OFF_KIND(fighter, Hash40::new("sys_superstar"), false, false);
-                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_superstar"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 1, true, 0.6);
-                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("waist"), 0, 0, 0, 0, 0, 0, 1.0, true, 1);
-                macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
-                macros::EFFECT_FOLLOW_ALPHA(fighter, Hash40::new("sys_status_attack_up"), Hash40::new("bust"), 0, 0, 0, 0, 0, 0, 1.0, true, 1);
-                macros::LAST_EFFECT_SET_COLOR(fighter, 0.0, 0.5, 1.0);
-                _EFFECT_COUNTER = 0;
-            }
         }
     }
 }
