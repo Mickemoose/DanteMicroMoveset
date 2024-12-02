@@ -410,6 +410,15 @@ unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
         let color = WorkModule::get_int(fighter.module_accessor, *FIGHTER_INSTANCE_WORK_ID_INT_COLOR);
         
         if crate::MARKED_COLORS[color as usize] {
+            let scale = ModelModule::scale(fighter.module_accessor);
+            let default_scale = WorkModule::get_param_float(fighter.module_accessor, hash40("scale"), 0);
+    
+            // Apply scaling effect if the scale matches the default
+            if scale == default_scale {
+                ModelModule::set_scale(fighter.module_accessor, 1.07);
+                AttackModule::set_attack_scale(fighter.module_accessor, 1.07, true);
+                GrabModule::set_size_mul(fighter.module_accessor, 1.07);
+            }
             // Decrease combo timer every frame
             if ![
                 *FIGHTER_STATUS_KIND_CATCH_ATTACK,

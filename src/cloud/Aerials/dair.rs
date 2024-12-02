@@ -13,7 +13,9 @@ use {
 /// DOWN AERIAL ///
 unsafe extern "C" fn game_specialairndown(agent: &mut L2CAgentBase) {
     frame(agent.lua_state_agent, 1.0);
-    //macros::FT_MOTION_RATE(agent, 0.5);
+    if macros::is_excute(agent) {
+        macros::FT_MOTION_RATE(agent, 1.5);
+    }
     for _ in 0..20 {
         if macros::is_excute(agent) {
             macros::ATTACK(agent, 0, 0, Hash40::new("top"), 4.0, 50, 80, 0, 25, 4.0, 0.0, 0.0, 0.0, Some(0.0), Some(-22.0), Some(0.0), 0.0, 1.0, *ATTACK_SETOFF_KIND_OFF, *ATTACK_LR_CHECK_F, false, -2, 0.0, 0, false, false, false, false, false, *COLLISION_SITUATION_MASK_GA, *COLLISION_CATEGORY_MASK_ALL, *COLLISION_PART_MASK_ALL, false, Hash40::new("collision_attr_jack_bullet"), *ATTACK_SOUND_LEVEL_S, *COLLISION_SOUND_ATTR_JACK_SHOT, *ATTACK_REGION_OBJECT);
@@ -58,16 +60,29 @@ unsafe extern "C" fn game_specialairndown(agent: &mut L2CAgentBase) {
 
 unsafe extern "C" fn effect_specialairndown(agent: &mut L2CAgentBase) {
     wait(agent.lua_state_agent, 1.0);
-    if macros::is_excute(agent) {
-        macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, -5.0, 1.9, 0, 0, 0, 1, true);
-        macros::LAST_EFFECT_SET_RATE(agent, 2);
+    for _ in 0..20 {
+        if macros::is_excute(agent) {
+            macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, -5.0, 1.8, 0, 0, 0, 1, true);
+            macros::LAST_EFFECT_SET_RATE(agent, 1.5);
+        }
+        wait(agent.lua_state_agent, 1.0);
+        wait(agent.lua_state_agent, 6.0);
+        if macros::is_excute(agent) {
+            macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, -5.0, 1.8, 0, 0, 0, 1, true);
+        }
+        wait(agent.lua_state_agent, 1.0);
+        wait(agent.lua_state_agent, 6.0);
     }
-    wait(agent.lua_state_agent, 7.0);
-    wait(agent.lua_state_agent, 1.0);
-    if macros::is_excute(agent) {
-        macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, -5.0, 1.9, 0, 0, 0, 1, true);
-    }
-    wait(agent.lua_state_agent, 14.0);
+    //if macros::is_excute(agent) {
+     //   macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, -5.0, 0, 0, 0, 0, 1, true);
+    //    macros::LAST_EFFECT_SET_RATE(agent, 2);
+    //}
+    //wait(agent.lua_state_agent, 7.0);
+   // wait(agent.lua_state_agent, 1.0);
+    //if macros::is_excute(agent) {
+     //   macros::EFFECT_FLW_UNSYNC_VIS(agent, Hash40::new("dante_gun_muzzle"), Hash40::new("havel"), 0, -5.0, 0, 0, 0, 0, 1, true);
+    //}
+    //wait(agent.lua_state_agent, 14.0);
 }
 
 unsafe extern "C" fn sound_specialairndown(agent: &mut L2CAgentBase) {
