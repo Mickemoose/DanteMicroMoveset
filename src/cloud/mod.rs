@@ -26,9 +26,8 @@ use crate::MARKED_COLORS;
 
 const FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_EFFECT_SPAWNED : i32 = 0x20000226;
 const FIGHTER_INSTANCE_WORK_ID_INT_STYLE_TIMER : i32 = 0x1000022A;
-const FIGHTER_INSTANCE_WORK_ID_INT_STYLE_COUNTER : i32 = 0x1000022B;
+const FIGHTER_INSTANCE_WORK_ID_INT_STYLE_COUNTER : i32 = 0x10000228;
 const FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_AURA_ACTIVE : i32 = 0x20000227;
-static mut _EFFECT_COUNTER: u32 = 0;
 
 unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
     unsafe {
@@ -89,31 +88,38 @@ unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
                 && !CatchModule::is_catch(boma)) {
                     WorkModule::on_flag(boma, FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_EFFECT_SPAWNED);
                     WorkModule::inc_int(boma, FIGHTER_INSTANCE_WORK_ID_INT_STYLE_COUNTER);
-                    WorkModule::set_int(boma, 100, FIGHTER_INSTANCE_WORK_ID_INT_STYLE_TIMER);
+                    WorkModule::set_int(boma, 150, FIGHTER_INSTANCE_WORK_ID_INT_STYLE_TIMER);
 
                     let combo_counter = WorkModule::get_int(boma, FIGHTER_INSTANCE_WORK_ID_INT_STYLE_COUNTER);
                     if combo_counter == 3 {
                         macros::PLAY_SE(fighter, Hash40::new("se_dmc_rank_d"));
-                        macros::EFFECT(fighter, Hash40::new("dmc_rank_d"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT(fighter, Hash40::new("dmc_rank_d"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT_FOLLOW(fighter, Hash40::new("dmc_rank_d"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3, false);
                     } else if combo_counter == 6 {
                         macros::PLAY_SE(fighter, Hash40::new("se_dmc_rank_c"));
-                        macros::EFFECT(fighter, Hash40::new("dmc_rank_c"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT(fighter, Hash40::new("dmc_rank_c"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT_FOLLOW(fighter, Hash40::new("dmc_rank_c"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3, false);
                     } else if combo_counter == 9 {
                         macros::PLAY_SE(fighter, Hash40::new("se_dmc_rank_b"));
-                        macros::EFFECT(fighter, Hash40::new("dmc_rank_b"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT(fighter, Hash40::new("dmc_rank_b"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT_FOLLOW(fighter, Hash40::new("dmc_rank_b"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3, false);
                     } else if combo_counter == 12 {
                         macros::PLAY_SE(fighter, Hash40::new("se_dmc_rank_a"));
-                        macros::EFFECT(fighter, Hash40::new("dmc_rank_a"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT(fighter, Hash40::new("dmc_rank_a"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT_FOLLOW(fighter, Hash40::new("dmc_rank_a"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3, false);
                     } else if combo_counter == 15 {
                         WorkModule::on_flag(boma, FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_AURA_ACTIVE);
                         macros::PLAY_SE(fighter, Hash40::new("se_dmc_rank_s"));
-                        macros::EFFECT(fighter, Hash40::new("dmc_rank_s"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT(fighter, Hash40::new("dmc_rank_s"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT_FOLLOW(fighter, Hash40::new("dmc_rank_s"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3, false);
                     } else if combo_counter == 18 {
                         macros::PLAY_SE(fighter, Hash40::new("se_dmc_rank_ss"));
-                        macros::EFFECT(fighter, Hash40::new("dmc_rank_ss"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT(fighter, Hash40::new("dmc_rank_ss"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT_FOLLOW(fighter, Hash40::new("dmc_rank_ss"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3, false);
                     } else if combo_counter == 21 {
                         macros::PLAY_SE(fighter, Hash40::new("se_dmc_rank_sss"));
-                        macros::EFFECT(fighter, Hash40::new("dmc_rank_sss"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT(fighter, Hash40::new("dmc_rank_sss"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3.0, 0, 0, 0, 0, 0, 0, false);
+                        //macros::EFFECT_FOLLOW(fighter, Hash40::new("dmc_rank_sss"), Hash40::new("head"), 0, 10, 0, 0, 0, 0, 3, false);
                     }
                 }
                 
@@ -143,6 +149,38 @@ unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
     }
 }
 
+unsafe extern "C" fn dante_frame_nostyle(fighter: &mut L2CFighterCommon) {
+    unsafe {
+        let boma = fighter.module_accessor;
+        let status_kind = StatusModule::status_kind(boma);
+        let status_frame = fighter.global_table[0xe].get_f32();
+        let motion_kind = MotionModule::motion_kind(boma);
+        let color = WorkModule::get_int(fighter.module_accessor, *FIGHTER_INSTANCE_WORK_ID_INT_COLOR);
+        
+        if crate::MARKED_COLORS[color as usize] {
+            let scale = ModelModule::scale(fighter.module_accessor);
+            let default_scale = WorkModule::get_param_float(fighter.module_accessor, hash40("scale"), 0);
+    
+            // Apply scaling effect if the scale matches the default
+            if scale == default_scale {
+                ModelModule::set_scale(fighter.module_accessor, 1.07);
+                AttackModule::set_attack_scale(fighter.module_accessor, 1.07, true);
+                GrabModule::set_size_mul(fighter.module_accessor, 1.07);
+            }
+
+            if StatusModule::status_kind(fighter.module_accessor) == *FIGHTER_STATUS_KIND_ATTACK
+            || StatusModule::status_kind(fighter.module_accessor) == *FIGHTER_STATUS_KIND_ATTACK_AIR
+            {
+                // Show gun
+                ModelModule::set_mesh_visibility(fighter.module_accessor, Hash40::new("dante_gun"), true);
+            } else {
+                // Hide gun
+                ModelModule::set_mesh_visibility(fighter.module_accessor, Hash40::new("dante_gun"), false);
+            }
+        }
+    }
+}
+
 pub fn install() {
     let agent = &mut smashline::Agent::new("cloud");
     //install aerials
@@ -150,6 +188,6 @@ pub fn install() {
     Tilts::install();
     Jabs::install();
     Agent::new("cloud")
-        .on_line(Main, dante_frame)
+        .on_line(Main, dante_frame_nostyle)
         .install();
 }
