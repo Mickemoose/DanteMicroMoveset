@@ -89,8 +89,7 @@ unsafe extern "C" fn dante_frame(fighter: &mut L2CFighterCommon) {
                 && !CatchModule::is_catch(boma)) {
                     WorkModule::on_flag(boma, FIGHTER_INSTANCE_WORK_ID_FLAG_STYLE_EFFECT_SPAWNED);
                     WorkModule::inc_int(boma, FIGHTER_INSTANCE_WORK_ID_INT_STYLE_COUNTER);
-                    WorkModule::set_int(boma, 90, FIGHTER_INSTANCE_WORK_ID_INT_STYLE_TIMER);
-                    // ^ 60 for Mario & Luigi-specific version ^
+                    WorkModule::set_int(boma, 100, FIGHTER_INSTANCE_WORK_ID_INT_STYLE_TIMER);
 
                     let combo_counter = WorkModule::get_int(boma, FIGHTER_INSTANCE_WORK_ID_INT_STYLE_COUNTER);
                     if combo_counter == 3 {
